@@ -1,0 +1,15 @@
+cmake_minimum_required (Version 3.1)
+project(Problem5_cmakeproject)
+
+include_directories(${CMAKE_SOURCE_DIR}/include)
+link_directories(${CMAKE_SOURCE_DIR}/lib)
+
+configure_file ( ${PROJECT_SOURCE_DIR}/include/header.h)
+set(SOURCE src/driver.c)
+add_executable(myexe ${PROJECT_SOURCE_DIR}/${SOURCE})
+
+target_link_libraries(myexe libmyfile.so libmyfile.a)
+
+install(TARGETS myexe DESTINATION /usr/bin)
+install(FILES man/myadd.3 DESTINATION /usr/share/man/man3)
+
